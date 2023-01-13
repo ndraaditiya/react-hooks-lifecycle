@@ -54,7 +54,7 @@ function App() {
   }
 
   const Incrementor = useCallback(() => { //this func only executed on child element when the count changed
-    return [count, count + 2, count + 3]
+    return [count + 1, count + 2, count + 3]
   }, [count])
 
   const showLOg = () => {

@@ -20,13 +20,16 @@ const ChildComponent = ({ Incrementor, setCount, id }) => {
   return (
     <div>
       Child Component
-      {/* this setName below will not rerendered Parent Element becuse the setName not from Parent Element */}
+
+      {/* this setName below will not rerendered Parent Element becuse the setName not from Parent Element
+        bu will rerenderr this element and the 2nd child element when the input changing each character
+      */}
       <input type='text' onChange={(e) => setName(e.target.value)} />
 
       {/* the setCount on button below will rerendered whole Parent Element except func */}
-      <button onClick={() => setCount((prev) => prev + 1)}>Btn Child</button>
+      <button onClick={() => setCount((prev) => prev + 1)}>Count from Child</button>
       <br />
-      {dataChild.map((i, index) => <p key={index}>{i}</p>)}
+      {dataChild.map((i, index) => <span key={index}>{i + ' '}</span>)}
       <SecondChildComponent setAnimal={setAnimal} />
     </div>
   )
