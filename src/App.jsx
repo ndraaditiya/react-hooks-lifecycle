@@ -12,7 +12,7 @@ function App() {
   // inside this custom hook there's a useEffct with url props
   const { data: dataFromUSeApi } = UseAPI('https://jsonplaceholder.typicode.com/todos')
 
-  // this all below will exactly executed when every state changed or function called, no matter what it's that
+  // this all below will exactly executed when every state changed, no matter what it's that
   const key = useId()
   const refName = useRef()
   const [count, setCount] = useState(0)
@@ -22,7 +22,7 @@ function App() {
 
   const [fruit, setFruit] = useState('')
 
-  // this log below will exactly executed when every state changed or function called, no matter what it's that
+  // this log below will exactly executed when every state changed, no matter what it's that
   console.log('rendrrred parent');
 
   useMemo(() => {
@@ -39,7 +39,7 @@ function App() {
     fetchDT2()
   }, [])
 
-  // this log below will exactly executed when every state changed or function called, no matter what it's that
+  // this log below will exactly executed when every state changed, no matter what it's that
   console.log('rendrrred parent below useEffect');
 
   const fetchDT = () => {
@@ -63,7 +63,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* this log below will exactly executed when every state changed or function called, no matter what it's that */}
+      {/* this log below will exactly executed when every state changed, no matter what it's that */}
       {console.log('elements on return App')}
       <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -78,7 +78,7 @@ function App() {
           count is {count}
         </button>
 
-        {/* when input text use onChange, the whole App element will rendered except func 
+        {/* when input text use onChange, the whole App element will rendered except function 
           So, if you dont use or wanna know the value of name realtime. You better use useRef
         */}
         <input
@@ -100,7 +100,8 @@ function App() {
         <button onClick={() => setResource('comments')}>Comments</button>
         <button onClick={() => setResource('photos')}>Photos</button>
       </div>
-      {/* <br /> */}
+
+      {/* this child component also will rerender when state changed */}
       <ChildComponent Incrementor={Incrementor} setCount={setCount} id={key} />
     </div>
   )
