@@ -21,7 +21,7 @@ const UseAPI = (url) => {
               setData(data)
             }).catch((err) => {
               if (axios.isCancel(err)) {
-                console.log('Fetch Canceled!')
+                console.warn('Fetch Canceled!')
               }
             })
           // console.log(cancelToken) 

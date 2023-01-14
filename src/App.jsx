@@ -34,7 +34,7 @@ function App() {
     // this abort is for cancel the fetch when the api or url already changed
     // i implementing this on btn Get Data Comments nad Get Data Photos
     const controller = new AbortController()
-    const signal = controller.signal
+    const { signal } = controller
 
     fetchDT(signal) // the function belom will execute when resource changed, but it'll execute when first time rendered
 
@@ -63,6 +63,8 @@ function App() {
       .then((data) => {
         setData(data)
         console.log(data)
+      }).catch((err) => {
+        if (err.name === 'AbortError') console.warn('Fetch Canceled!')
       })
   }
 
