@@ -1,0 +1,54 @@
+
+So the conclusion is:
+
+FYI. React 18 render your App twice when you on Strict Mode. 
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+But it's fine, beacuse React said, the render twice will show in just development or production. They said it's for more safe production.
+Once you upload or hosting your project, it will not do that. For detail, you can read on this: https://reactjs.org/docs/strict-mode.html
+But if you run your App locally from the server and accessing with IP Address. I suggest you comment the <React.StrictMode> tag when you finished your App.
+If you not do that, your App will always render twice. Like Fetching the same API twice and render the element twice.
+
+- when "set" hook on useState accessed or you change the state, it'll rerender the whole App element and all the Child Element except
+fucntion declaration who not called on "onChange".
+
+- if you dont wanna use or know the value of the state realtime, instead using useState, you better use useRef for access the value.
+useRef will not rerender the element when you typing on input text.
+
+- hooks like useMemo(), useCallback() and memo(). It's hooks for memorized, it's mean will cost the device memory. You must be carefull
+to implementing those hooks. Instead of using those hooks, you can just separated the elemnent being two different element
+instead the element have child element and have the child element again continuously.
+
+- useTransition hooks mean the elelment will render twice. First when the startTransition() started,
+and the second when the function inside startTransition() finished. Again, You must be careful to use this hooks,
+beacuse of it, it'll render your element twice.
+
+- useEffect has 4 way to used.
+
+  this will always execute the fucntion when state changed  
+    useEffect(() => {
+      function()
+    })
+
+  this will execute the fucntion once when first render  
+    useEffect(() => {
+      function()
+    },[])
+
+  this will execute the function when first render and reexecute when the state changed  
+    useEffect(() => {
+      function()
+    },[state])
+
+  this will execute the setState('') first to clean the state before execute the function inside useEffect  
+  useEffect(() => {
+      function()
+      return () => {
+        setState('')
+      }
+  },[])
+
+- I suggest you always use AbortController or CancelToken (on axios) when you fetching API. Beacuse when the fetching changed fastly
+it'll cancel the first fetch and start fetching the new API. Beacuse when you not implementing it, it will still fetching the
+first API in backdoor during fetching the second API. And yeah, it's cost the device network.

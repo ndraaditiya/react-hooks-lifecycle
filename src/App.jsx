@@ -4,9 +4,6 @@ import './App.css'
 import UseAPI from './UseApi'
 import ChildComponent from './ChildComponent'
 
-// So the conclusion is, when "set" hook on useState accessed,
-// it'll rerender the whole App element and all the Child Element except fucntion
-
 function App() {
   // this custom hook just will render once and not rerender when state changed because
   // inside this custom hook there's a useEffct with url props
@@ -54,7 +51,7 @@ function App() {
   }, [])
 
   // this log below will exactly executed when every state changed, no matter what it's that
-  console.log('rendrrred parent below useEffect');
+  console.log('rendered parent below useEffect');
 
   const fetchDT = (signal) => {
     console.log('render function fetch data')
@@ -104,12 +101,13 @@ function App() {
           type="text"
           // value={name} onChange={(e) => ertsetName(e.target.value)}
           ref={refName}
+          placeholder='Name'
         />
 
         {/* this button below while rerender the whole app element whne it's clicked, beacuse there's a setName hooks */}
         <button onClick={() => setName(refName.current.value)}>Show Input</button>
 
-        <input type='text' onChange={(e) => setFruit(e.target.value)} />
+        <input type='text' onChange={(e) => setFruit(e.target.value)} placeholder='Fruit' />
 
         {/* this button below just will executed func showLog and not rerender the whole App element */}
         <button onClick={showLOg}>Show log Fruit</button>

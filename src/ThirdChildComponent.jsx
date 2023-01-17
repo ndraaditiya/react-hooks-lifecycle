@@ -27,7 +27,7 @@ const ThirdChildComponent = () => {
 
   return (
     <div>
-      ThirdChildComponent
+      Third Child Component
       <input type='text' value={input} onChange={handleChange} placeholder='type something' />
       {isPending ? 'Loading..' : lists && lists.map((item, index) => <p key={index}>{item}</p>)}
     </div>
