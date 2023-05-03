@@ -38,3 +38,9 @@
 .card {
   padding: 2em;
 }
+
+.box-input-lists {
+  height: 200px;
+  width: 450px;
+  overflow: auto;
+}
