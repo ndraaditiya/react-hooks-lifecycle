@@ -24,6 +24,9 @@ instead the element have child element and have the child element again continuo
 and the second when the function inside startTransition() finished. Again, You must be careful to use this hooks,
 beacuse of it, it'll render your element twice.
 
+- useDefferedValue have same function like useTransition, the different is, useTransition wraps a block of code updating state 
+and useDeferreredValue wraps a single value.
+
 - useEffect has 4 way to used.
 
   this will always execute the fucntion when state changed  
